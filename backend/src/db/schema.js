@@ -1,6 +1,6 @@
  import {pgTable, serial, text, timestamp, integer} from "drizzle-orm/pg-core";
 
- export const favoriteRecipes = pgTable("favorites", {
+ export const favoritesTable = pgTable("favorites", {
    id: serial("id").primaryKey(),
    user_id: text("user_id").notNull(),
    recipe_id: integer("recipe_id").notNull(),
