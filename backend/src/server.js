@@ -8,11 +8,11 @@ import job from "./config/cron.js";
 const app = express();
 const PORT = ENV.PORT || 3001;
 
-if (ENV.NODE_ENV === "production") job.start(); 
+if (ENV.NODE_ENV === "production") job.start();
 app.use(express.json());
 
-app.get("/api/favourite", (req, res) => {
-  res.status(200).send("Welcome to the Recipe API");
+app.get("/api/health", (req, res) => {
+  res.status(200).json({ success: true });
 });
 
 app.post("/api/favourites", async (req, res) => {
