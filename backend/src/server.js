@@ -6,9 +6,11 @@ import { eq, and } from "drizzle-orm";
 import job from "./config/cron.js";
 
 const app = express();
+
 const PORT = ENV.PORT || 3001;
 
 if (ENV.NODE_ENV === "production") job.start();
+
 app.use(express.json());
 
 app.get("/api/health", (req, res) => {
