@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { useRouter } from "expo-router";
 import { useSignIn } from "@clerk/clerk-expo";
-import React, { useState } from "react";
+import { useState } from "react";
 import { authStyles } from "../../assets/styles/auth.styles";
 import { Image } from "expo-image";
 import { COLORS } from "../../constants/colors";
@@ -85,7 +85,8 @@ const SignInScreen = () => {
                 placeholder="Enter email"
                 placeholderTextColor={COLORS.textLight}
                 value={email}
-                onChange={setEmail}
+                // onChange={setEmail}
+                onChangeText={(text) => setEmail(text)}
                 keyboardType="email-address"
                 autoCapitalize="none"
               />
@@ -98,7 +99,8 @@ const SignInScreen = () => {
                 placeholder="Enter passwod"
                 placeholderTextColor={COLORS.textLight}
                 value={password}
-                onChange={setPassword}
+                // onChange={setPassword}
+                onChangeText={(text) => setPassword(text)}
                 secureTextEntry={!showPassword}
                 autoCapitalize="none"
               />
