@@ -47,7 +47,7 @@ const SignUpScreen = () => {
     try {
       await signUp.create({ emailAddress: email, password });
       await signUp.prepareEmailAddressVerification({ strategy: "email_code" });
-      console.log("signUp.id", signUp?.id);
+      // console.log("signUp.id", signUp?.id);
       setPendingVerification(true);
     } catch (err: any) {
       Alert.alert(
@@ -64,57 +64,17 @@ const SignUpScreen = () => {
     if (!isLoaded) return;
 
     setLoading(true);
-    const trimmedCode = code.trim();
-    console.log("Entered code:", trimmedCode, "length:", trimmedCode.length);
+    // const trimmedCode = code.trim();
+    // console.log("Entered code:", trimmedCode, "length:", trimmedCode.length);
 
-    console.log("signUp.id", signUp?.id);
-    // return;
-
-    // try {
-    //   // const signUpAttempt = await signUp.attemptEmailAddressVerification({
-    //   //   code: trimmedCode,
-    //   // });
-
-    //   // if (signUpAttempt.status === "complete") {
-    //   //   await setActive({ session: signUpAttempt.createdSessionId });
-    //   // } else {
-    //   //   Alert.alert("Error", "Verification failed, please try again.");
-    //   //   console.error(JSON.stringify(signUpAttempt, null, 2));
-    //   // }
-
-    //   const signUpAttempt = await signUp.attemptEmailAddressVerification({
-    //     code: trimmedCode,
-    //   });
-
-    //   // If verification was completed, set the session to active
-    //   // and redirect the user
-    //   if (signUpAttempt.status === "complete") {
-    //     await setActive({ session: signUpAttempt.createdSessionId });
-    //     router.replace("/");
-    //   } else {
-    //     // If the status is not complete, check why. User may need to
-    //     // complete further steps.
-
-    //     Alert.alert("Error", "Verification failed, please try again.");
-
-    //     console.error(JSON.stringify(signUpAttempt, null, 2));
-    //   }
-    // } catch (err: any) {
-    //   console.error("Verification Error:", JSON.stringify(err, null, 2));
-    //   Alert.alert(
-    //     "Error",
-    //     err.errors?.[0]?.message || err.message || "Verification Failed"
-    //   );
-    // } finally {
-    //   setLoading(false);
-    // }
+    // console.log("signUp.id", signUp?.id);
 
     try {
       const completeSignUp = await signUp.attemptEmailAddressVerification({
         code,
       });
 
-      console.log("status:", completeSignUp.status); 
+      console.log("status:", completeSignUp.status);
       console.log("createdSessionId:", completeSignUp.createdSessionId);
 
       if (completeSignUp.status === "complete") {
