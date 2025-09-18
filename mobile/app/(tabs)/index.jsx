@@ -16,7 +16,7 @@ import { COLORS } from "../../constants/colors";
 import { Ionicons } from "@expo/vector-icons";
 import CategoryFilter from "../../components/CategoryFilter";
 // import CategoryFilter from "../../components/CategoryFilter";
-// import RecipeCard from "../../components/RecipeCard";
+import RecipeCard from "../../components/RecipeCard";
 // import LoadingSpinner from "../../components/LoadingSpinner";
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -187,7 +187,7 @@ const HomeScreen = () => {
           <View style={homeStyles.sectionHeader}>
             <Text style={homeStyles.sectionTitle}>{selectedCategory}</Text>
           </View>
-{/* 
+
           {recipes.length > 0 ? (
             <FlatList
               data={recipes}
@@ -205,7 +205,7 @@ const HomeScreen = () => {
               <Text style={homeStyles.emptyTitle}>No recipes found</Text>
               <Text style={homeStyles.emptyDescription}>Try a different category</Text>
             </View>
-          )} */}
+          )}
         </View>
       </ScrollView>
     </View>
