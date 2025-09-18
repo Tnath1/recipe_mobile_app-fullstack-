@@ -74,7 +74,11 @@ const FavoritesScreen = () => {
           <FlatList
             data={favoriteRecipes}
             renderItem={({ item }) => <RecipeCard recipe={item} />}
-            keyExtractor={(item) => item.id.toString()}
+            keyExtractor={(item, index) => {
+              if (item?.id) return item.id.toString();
+              if (item?.recipe_id) return item.recipe_id.toString(); // fallback
+              return index.toString(); // final fallback
+            }}
             numColumns={2}
             columnWrapperStyle={favoritesStyles.row}
             contentContainerStyle={favoritesStyles.recipesGrid}

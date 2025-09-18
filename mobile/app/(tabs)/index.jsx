@@ -17,7 +17,7 @@ import { Ionicons } from "@expo/vector-icons";
 import CategoryFilter from "../../components/CategoryFilter";
 // import CategoryFilter from "../../components/CategoryFilter";
 import RecipeCard from "../../components/RecipeCard";
-// import LoadingSpinner from "../../components/LoadingSpinner";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -36,7 +36,7 @@ const HomeScreen = () => {
 
       const [apiCategories, randomMeals, featuredMeal] = await Promise.all([
         MealAPI.getCategories(),
-        MealAPI.getRandomMeals(12), 
+        MealAPI.getRandomMeals(12),
         MealAPI.getRandomMeal(),
       ]);
 
@@ -66,9 +66,7 @@ const HomeScreen = () => {
     }
   };
 
-  
-  const loadCategoryData = async (category) => {
-  };
+  const loadCategoryData = async (category) => {};
 
   const handleCategorySelect = async (category) => {
     setSelectedCategory(category);
@@ -86,8 +84,8 @@ const HomeScreen = () => {
     loadData();
   }, []);
 
-  // if (loading && !refreshing) return <LoadingSpinner message="Loading delicions recipes..." />;
-
+  if (loading && !refreshing)
+    return <LoadingSpinner message="Loading delicions recipes..." />;
 
   return (
     <View style={homeStyles.container}>
@@ -103,7 +101,7 @@ const HomeScreen = () => {
         contentContainerStyle={homeStyles.scrollContent}
       >
         {/*  ANIMAL ICONS */}
-        <View style={homeStyles.welcomeSection}>
+        {/* <View style={homeStyles.welcomeSection}>
           <Image
             source={require("../../assets/images/lamb.png")}
             style={{
@@ -125,7 +123,8 @@ const HomeScreen = () => {
               height: 100,
             }}
           />
-        </View>
+        </View> */}
+        <View style={homeStyles.welcomeSection} />
 
         {/* FEATURED SECTION */}
         {featuredRecipe && (
@@ -154,17 +153,35 @@ const HomeScreen = () => {
 
                     <View style={homeStyles.featuredMeta}>
                       <View style={homeStyles.metaItem}>
-                        <Ionicons name="time-outline" size={16} color={COLORS.white} />
-                        <Text style={homeStyles.metaText}>{featuredRecipe.cookTime}</Text>
+                        <Ionicons
+                          name="time-outline"
+                          size={16}
+                          color={COLORS.white}
+                        />
+                        <Text style={homeStyles.metaText}>
+                          {featuredRecipe.cookTime}
+                        </Text>
                       </View>
                       <View style={homeStyles.metaItem}>
-                        <Ionicons name="people-outline" size={16} color={COLORS.white} />
-                        <Text style={homeStyles.metaText}>{featuredRecipe.servings}</Text>
+                        <Ionicons
+                          name="people-outline"
+                          size={16}
+                          color={COLORS.white}
+                        />
+                        <Text style={homeStyles.metaText}>
+                          {featuredRecipe.servings}
+                        </Text>
                       </View>
                       {featuredRecipe.area && (
                         <View style={homeStyles.metaItem}>
-                          <Ionicons name="location-outline" size={16} color={COLORS.white} />
-                          <Text style={homeStyles.metaText}>{featuredRecipe.area}</Text>
+                          <Ionicons
+                            name="location-outline"
+                            size={16}
+                            color={COLORS.white}
+                          />
+                          <Text style={homeStyles.metaText}>
+                            {featuredRecipe.area}
+                          </Text>
                         </View>
                       )}
                     </View>
@@ -201,9 +218,15 @@ const HomeScreen = () => {
             />
           ) : (
             <View style={homeStyles.emptyState}>
-              <Ionicons name="restaurant-outline" size={64} color={COLORS.textLight} />
+              <Ionicons
+                name="restaurant-outline"
+                size={64}
+                color={COLORS.textLight}
+              />
               <Text style={homeStyles.emptyTitle}>No recipes found</Text>
-              <Text style={homeStyles.emptyDescription}>Try a different category</Text>
+              <Text style={homeStyles.emptyDescription}>
+                Try a different category
+              </Text>
             </View>
           )}
         </View>
