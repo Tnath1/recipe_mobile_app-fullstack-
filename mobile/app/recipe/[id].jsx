@@ -85,6 +85,7 @@ const RecipeDetailScreen = () => {
         );
         if (!response.ok) throw new Error("Failed to remove recipe");
 
+        Alert.alert("Deleted", "Recipe removed from favorites!");
         setIsSaved(false);
       } else {
         // add to favorites
@@ -104,6 +105,8 @@ const RecipeDetailScreen = () => {
         });
 
         if (!response.ok) throw new Error("Failed to save recipe");
+        Alert.alert("Success", "Recipe saved to favorites!");
+
         setIsSaved(true);
       }
     } catch (error) {

@@ -17,7 +17,7 @@ import { Ionicons } from "@expo/vector-icons";
 import CategoryFilter from "../../components/CategoryFilter";
 // import CategoryFilter from "../../components/CategoryFilter";
 import RecipeCard from "../../components/RecipeCard";
-// import LoadingSpinner from "../../components/LoadingSpinner";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -86,7 +86,7 @@ const HomeScreen = () => {
     loadData();
   }, []);
 
-  // if (loading && !refreshing) return <LoadingSpinner message="Loading delicions recipes..." />;
+  if (loading && !refreshing) return <LoadingSpinner message="Loading delicions recipes..." />;
 
 
   return (
@@ -103,7 +103,7 @@ const HomeScreen = () => {
         contentContainerStyle={homeStyles.scrollContent}
       >
         {/*  ANIMAL ICONS */}
-        <View style={homeStyles.welcomeSection}>
+        {/* <View style={homeStyles.welcomeSection}>
           <Image
             source={require("../../assets/images/lamb.png")}
             style={{
@@ -125,7 +125,7 @@ const HomeScreen = () => {
               height: 100,
             }}
           />
-        </View>
+        </View> */}
 
         {/* FEATURED SECTION */}
         {featuredRecipe && (
